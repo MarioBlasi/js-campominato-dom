@@ -28,6 +28,7 @@ function startGame() {
       console.log("Changed the color" + thisCell.textContent);
       //per generare i 16 numeri casuali utilizziamo Math.random()*16 e
       // poi con la funzione Math.round arrotondiamo all’intero.*/
+      //generando cosí un numero casuale ad ogni click di una singola cella
       num = Math.round(Math.random() * 16);
       console.log("Numero casuale " + num);
     });
@@ -39,7 +40,6 @@ playButton.addEventListener("click", startGame);
 
 /*Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: 
 le bombe.
-
 nella stessa cella può essere posizionata al massimo una bomba, 
 perciò nell’array delle bombe non potranno esserci due numeri uguali.
 
@@ -47,7 +47,6 @@ In seguito l'utente clicca su una cella:
 se il numero è presente nella lista dei numeri generati
 abbiamo calpestato una bomba
 la cella si colora di rosso e la partita termina.
-
 Altrimenti
 la cella cliccata si colora di azzurro
 l'utente può continuare a cliccare sulle altre celle.
@@ -55,11 +54,10 @@ l'utente può continuare a cliccare sulle altre celle.
 La partita termina quando il giocatore clicca su una bomba o quando
  raggiunge il numero massimo possibile di numeri consentiti (ovvero 
   quando ha rivelato tutte le celle che non sono bombe).
-
 Al termine della partita il software deve comunicare il punteggio, 
 cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
 
-/*--------STEP 1----------*/
+/*--------STEP 1----------*/ // -------------  OK
 /*Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: 
 le bombe.
 // per generare i 16 numeri casuali utilizziamo Math.random()*16 e
@@ -74,3 +72,18 @@ le bombe.
 
 // associamo l input button alla cell e non al button cosi al click della cella
 //si genererá un numero casuale con il colore impostato celeste
+
+/*----------STEP---2-----*/
+/*nella stessa cella può essere posizionata al massimo una bomba, 
+perciò nell’array delle bombe non potranno esserci due numeri uguali.*/
+
+// distribuiamo casualmente le bombe nelle celle ( possiamo posizionare max una bomba a cella )
+// con il numero casuale precedentemente creato,
+// assegnadogli un una bomba ( cerchio nero ) che dovrá apparire sul browser una volta cliccato,
+// nello stesso tempo la casella si colorerá di rosso e dovremmo cancellare il colore celeste
+// ( prima assegnato)
+
+/* per cui assegnamo il colore rosso alla cella 'casuale' 
+  - useremo if else 
+  - allinterno andremo a posizionare una bomba 
+  - come far finire la partita una volta trovata la bomba?????? */
