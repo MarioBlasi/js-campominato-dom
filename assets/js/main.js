@@ -45,8 +45,8 @@ function startGame() {
       console.log("Colore Celeste " + thisCell.textContent);
 
       if (bombs.includes(Number(thisCell.textContent))) {
-        thisCell.style.background = "red";
-        thisCell.textContent = "END";
+        thisCell.classList.add("bomb-cell");
+        console.log(" Game over!");
         alert("Hai calpestato una bomba! Il tuo punteggio è " + score);
       } else {
         thisCell.classList.toggle("bg_blue");

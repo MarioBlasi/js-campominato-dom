@@ -93,3 +93,8 @@ img {
   box-shadow: 0 0 9e9Q inset aquamarine;
   background-color: var(--c);
 }
+.bomb-cell {
+  background-image: url("/assets/img/bombabgred.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
