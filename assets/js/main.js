@@ -11,6 +11,7 @@
 const container = document.querySelector(".container-main");
 
 let nMax = 100;
+// let colori = ["nero", "rosso"]; // Creo un array di colori da assegnare
 
 for (let i = 1; i <= nMax; i++) {
   const cell = `<div class="cell">${i}</div>`;
@@ -37,6 +38,15 @@ function startGame() {
 const playButton = document.getElementById("play-button");
 
 playButton.addEventListener("click", startGame);
+
+// distribuiamo casualmente le bombe nelle celle ( possiamo posizionare max una bomba a cella )
+// con il numero casuale precedentemente creato,
+/*   --------- IN SOSTANZA DEVO ASSEGNARE UN COLORE AL NUMERO CASUALE CHE FUNGERA' DA BOMBA */
+/* -- per cui : 
+  - creo e seleziono l'elemento HTML che voglio modificare e assegno
+   un colore dall'array di colori utilizzando 
+   la proprietà style.background di CSS:
+
 
 /*Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: 
 le bombe.
@@ -71,9 +81,9 @@ le bombe.
 //associare l'evento onclick che richiama la funzione casuale()
 
 // associamo l input button alla cell e non al button cosi al click della cella
-//si genererá un numero casuale con il colore impostato celeste
+//si genererá un numero casuale con il colore preimpostato celeste
 
-/*----------STEP---2-----*/
+/*----------STEP---2-------------------*/
 /*nella stessa cella può essere posizionata al massimo una bomba, 
 perciò nell’array delle bombe non potranno esserci due numeri uguali.*/
 
