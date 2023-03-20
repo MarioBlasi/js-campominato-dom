@@ -20,15 +20,16 @@ for (let i = 1; i <= nMax; i++) {
 }
 
 const cellEl = document.querySelectorAll(".cell");
-
-function startGame() {
-  while (bombs <= 16) {
+function bombe() {
+  while (bombs.legth < 16) {
     let mrandom = Math.floor(Math.random() * nMax) + 1;
     if (!bombs.includes(mrandom)) {
       bombs.push(mrandom);
     }
   }
+}
 
+function startGame() {
   for (let i = 0; i < cellEl.length; i++) {
     const thisCell = cellEl[i];
     console.log(thisCell);
@@ -43,6 +44,7 @@ function startGame() {
     });
   }
 }
+
 const playButton = document.getElementById("play-button");
 
 playButton.addEventListener("click", startGame);
