@@ -1,0 +1,95 @@
+body {
+  overflow-x: hidden;
+}
+header {
+  margin-top: 0.5rem;
+}
+main {
+  background-color: aquamarine;
+}
+img {
+  max-width: 100%;
+}
+
+.container-main {
+  display: flex;
+  flex-flow: row wrap;
+  width: 50%;
+  margin: 2rem auto;
+}
+.cell {
+  width: calc(100% / 10);
+  border: 1px solid black;
+  border-radius: 5px;
+  aspect-ratio: 1/1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  transform: translateZ(-50px) rotateY(180deg);
+  color: white;
+  font-size: 20px;
+  font-family: Arial, Verdana, sans-serif;
+  padding-top: 1.5rem;
+}
+.bg_blue {
+  --c: #fff; /* text color */
+  background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%)
+      var(--_p, 100%) / 300% no-repeat,
+    #02b3e9; /* background color */
+  color: #0000;
+  border: none;
+  transform: perspective(100px) rotateY(calc(20deg * var(--_i, -1)));
+  text-shadow: calc(var(--_i, -1) * 0.08em) -0.01em 0 var(--c),
+    calc(var(--_i, -1) * -0.08em) 0.01em 2px #0004;
+  outline-offset: 0.1em;
+  transition: 0.3s;
+}
+.titolo > span {
+  font-size: 45px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+/* -------Play--Button------ */
+.push {
+  display: flex;
+  height: 4rem;
+}
+.play > button {
+  height: 2.2rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  width: 8rem;
+  --c: aquamarine; /* the color*/
+  box-shadow: 0 0 0 0.1em inset var(--c);
+  --_g: linear-gradient(var(--c) 0 0) no-repeat;
+  background: var(--_g) calc(var(--_p, 0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p, 0%)) 0%,
+    var(--_g) calc(var(--_p, 0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p, 0%)) 100%;
+  background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
+  outline-offset: 0.1em;
+  transition: background-size 0.4s, background-position 0s 0.4s;
+}
+.play > button:hover {
+  --_p: 100%;
+  transition: background-position 0.4s, background-size 0s;
+}
+.play > button:active {
+  box-shadow: 0 0 9e9Q inset #0009;
+  background-color: var(--c);
+  color: #fff;
+}
+/* ---------Dropdown-- Button--------- */
+.btn-group > button {
+  width: 8rem;
+  height: 2.2rem;
+  box-shadow: 0 0 0 0.1em inset var(--c);
+  border: 2px solid black;
+  border: 2px solid black aquamarine;
+}
+.btn-group > button:hover {
+  background-color: aquamarine;
+}
+.btn-group > button:active {
+  box-shadow: 0 0 9e9Q inset aquamarine;
+  background-color: var(--c);
+}
