@@ -26,26 +26,15 @@ function generazioneBombe() {
 
     if (!bombs.includes(mrandom)) {
       bombs.push(mrandom);
-      // console.log();
+      console.log(bombs);
     }
   }
   return bombs;
 }
 
-/*Al termine della partita il software deve comunicare il punteggio, 
-cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
-
-// Per contare il punteggio, cioè il numero di volte che l'utente ha cliccato su una cella che non era una bomba,
-//possiamo utilizzare una variabile contatore all'interno della funzione startGame()
-// andiamo ad incrementarla ogni volta che clicchiamo sulla cella che non contiene la bomba
-//alla fine del gioco comunichiamo il punteggio con un prompt
-
-/*  aggiungiamo un let score per il punteggio e aggiungiamo un else 
-per incrementare il punteggio e  colorare la cella di celeste
-con un if finale che controllera se tutte le celle senza la bomba sono state cliccate */
-
 function startGame() {
   let bombs = generazioneBombe();
+  let contatore = 0;
   let score = 0;
 
   for (let i = 0; i < cellEl.length; i++) {
@@ -53,20 +42,23 @@ function startGame() {
 
     console.log(thisCell);
     thisCell.addEventListener("click", function () {
-      console.log("Cambio colore" + thisCell.textContent);
+      console.log("Colore Celeste " + thisCell.textContent);
 
       if (bombs.includes(Number(thisCell.textContent))) {
         thisCell.style.background = "red";
-        thisCell.textContent = "XXX ";
-        console.log("Game over!");
+        thisCell.textContent = "END";
+        alert("Hai calpestato una bomba! Il tuo punteggio è " + score);
       } else {
         thisCell.classList.toggle("bg_blue");
+        score++;
       }
-      if (score === nMax - bombs.lenght) {
-        console.log("HAI VINTO ! " + score);
+
+      if (score === nMax - bombs.length) {
+        alert("Complimenti! Hai vinto con un punteggio di " + score);
       }
     });
   }
+  return bombs;
 }
 
 const playButton = document.getElementById("play-button");
@@ -93,7 +85,7 @@ La partita termina quando il giocatore clicca su una bomba o quando
 Al termine della partita il software deve comunicare il punteggio, 
 cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
 
-/*--------STEP 1----------*/ // -------------  OK
+/*--------STEP 1----------*/ // -------------
 /*Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: 
 le bombe.
 // per generare i 16 numeri casuali utilizziamo Math.random()*16 e
@@ -118,10 +110,14 @@ implementare il codice per generare le 16 bombe casuali comprese nel range di
 
 /*----------STEP---3-------------------*/
 
-/*Al termine della partita il software deve comunicare il punteggio, 
+/*Al termine della partita il software deve comunicare il punteggio con un prompt, 
 cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
 
 // Per contare il punteggio, cioè il numero di volte che l'utente ha cliccato su una cella che non era una bomba,
 //possiamo utilizzare una variabile contatore all'interno della funzione startGame()
 // andiamo ad incrementarla ogni volta che clicchiamo sulla cella che non contiene la bomba
 //alla fine del gioco comunichiamo il punteggio con un prompt
+
+/*  aggiungiamo un let score per il punteggio e aggiungiamo un else 
+per incrementare il punteggio e  colorare la cella di celeste
+con un if finale che controllera se tutte le celle senza la bomba sono state cliccate */
