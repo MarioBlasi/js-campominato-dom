@@ -12,11 +12,6 @@ const container = document.querySelector(".container-main");
 
 let nMax = 100;
 
-/* Utilizziamo un array per tracciare le celle che contangono le bombe con un 
-    ciclo while  per generare numeri casuali finché non ne ha generati 16 diversi. 
-    Ad ogni iterazione, controllo se la cella corrispondente al numero casuale generato è già stata
-    selezionata come bomba e se non lo è, aggiungo quella cella all'array delle bombe.*/
-
 for (let i = 1; i <= nMax; i++) {
   const cell = `<div class="cell">${i}</div>`;
   container.innerHTML += cell;
@@ -25,7 +20,7 @@ for (let i = 1; i <= nMax; i++) {
 const cellEl = document.querySelectorAll(".cell");
 
 function generazioneBombe() {
-  let bombs = []; // questo va messo all interno
+  let bombs = [];
   while (bombs.length < 16) {
     let mrandom = Math.floor(Math.random() * nMax) + 1;
 
@@ -37,18 +32,39 @@ function generazioneBombe() {
   return bombs;
 }
 
+/*Al termine della partita il software deve comunicare il punteggio, 
+cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
+
+// Per contare il punteggio, cioè il numero di volte che l'utente ha cliccato su una cella che non era una bomba,
+//possiamo utilizzare una variabile contatore all'interno della funzione startGame()
+// andiamo ad incrementarla ogni volta che clicchiamo sulla cella che non contiene la bomba
+//alla fine del gioco comunichiamo il punteggio con un prompt
+
+/*  aggiungiamo un let score per il punteggio e aggiungiamo un else 
+per incrementare il punteggio e  colorare la cella di celeste
+con un if finale che controllera se tutte le celle senza la bomba sono state cliccate */
+
 function startGame() {
-  let bombs = generazioneBombe(); // questo va messo all interno
+  let bombs = generazioneBombe();
+  let score = 0;
+
   for (let i = 0; i < cellEl.length; i++) {
     const thisCell = cellEl[i];
+
     console.log(thisCell);
     thisCell.addEventListener("click", function () {
-      thisCell.classList.toggle("bg_blue");
       console.log("Cambio colore" + thisCell.textContent);
 
       if (bombs.includes(Number(thisCell.textContent))) {
         thisCell.style.background = "red";
-        console.log("BOOM! Game over!");
+        thisCell.textContent = "XXX ";
+        console.log("Game over!");
+      } else {
+        thisCell.classList.toggle("bg_blue");
+        score++;
+      }
+      if (score === nMax - bombs.leght) {
+        console.log("hai vinto " + score);
       }
     });
   }
@@ -74,6 +90,7 @@ l'utente può continuare a cliccare sulle altre celle.
 La partita termina quando il giocatore clicca su una bomba o quando
  raggiunge il numero massimo possibile di numeri consentiti (ovvero 
   quando ha rivelato tutte le celle che non sono bombe).
+
 Al termine della partita il software deve comunicare il punteggio, 
 cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
 
@@ -99,3 +116,13 @@ cella corrisponde ad una delle 16 bombe generate. Se si, allora é una bomba alt
 
 implementare il codice per generare le 16 bombe casuali comprese nel range di
  celle generate.*/
+
+/*----------STEP---3-------------------*/
+
+/*Al termine della partita il software deve comunicare il punteggio, 
+cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
+
+// Per contare il punteggio, cioè il numero di volte che l'utente ha cliccato su una cella che non era una bomba,
+//possiamo utilizzare una variabile contatore all'interno della funzione startGame()
+// andiamo ad incrementarla ogni volta che clicchiamo sulla cella che non contiene la bomba
+//alla fine del gioco comunichiamo il punteggio con un prompt
