@@ -94,7 +94,7 @@ img {
   background-color: var(--c);
 }
 .bomb-cell {
-  background-image: url("/assets/img/bombabgred.avif");
+  background-image: url("/assets/img/bomb-background-design_1284-618.avif");
   background-repeat: no-repeat;
   background-size: cover;
 }
