@@ -11,8 +11,11 @@
 const container = document.querySelector(".container-main");
 
 let nMax = 100;
-// let colori = ["nero", "rosso"]; // Creo un array di colori da assegnare
 let bombs = [];
+/* Utilizziamo un array per tracciare le celle che contangono le bombe con un 
+    ciclo while  per generare numeri casuali finché non ne ha generati 16 diversi. 
+    Ad ogni iterazione, controllo se la cella corrispondente al numero casuale generato è già stata
+    selezionata come bomba e se non lo è, aggiungo quella cella all'array delle bombe.*/
 
 for (let i = 1; i <= nMax; i++) {
   const cell = `<div class="cell">${i}</div>`;
@@ -20,8 +23,10 @@ for (let i = 1; i <= nMax; i++) {
 }
 
 const cellEl = document.querySelectorAll(".cell");
+
 function bombe() {
-  while (bombs.legth < 16) {
+  bombs = [];
+  while (bombs.length < 16) {
     let mrandom = Math.floor(Math.random() * nMax) + 1;
     if (!bombs.includes(mrandom)) {
       bombs.push(mrandom);
@@ -90,8 +95,3 @@ cella corrisponde ad una delle 16 bombe generate. Se si, allora é una bomba alt
 
 implementare il codice per generare le 16 bombe casuali comprese nel range di
  celle generate.*/
-
-/* Utilizziamo un array per tracciare le celle che contangono le bombe con un 
-    ciclo while  per generare numeri casuali finché non ne ha generati 16 diversi. 
-    Ad ogni iterazione, controllo se la cella corrispondente al numero casuale generato è già stata
-    selezionata come bomba e se non lo è, aggiungo quella cella all'array delle bombe.*/
