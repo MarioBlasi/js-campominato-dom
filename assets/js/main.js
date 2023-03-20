@@ -12,6 +12,7 @@ const container = document.querySelector(".container-main");
 
 let nMax = 100;
 // let colori = ["nero", "rosso"]; // Creo un array di colori da assegnare
+let bombs = [];
 
 for (let i = 1; i <= nMax; i++) {
   const cell = `<div class="cell">${i}</div>`;
@@ -21,32 +22,30 @@ for (let i = 1; i <= nMax; i++) {
 const cellEl = document.querySelectorAll(".cell");
 
 function startGame() {
+  while (bombs <= 16) {
+    let mrandom = Math.floor(Math.random() * nMax) + 1;
+    if (bombs.includes(mrandom)) {
+      bombs.push(mrandom);
+    }
+  }
+
   for (let i = 0; i < cellEl.length; i++) {
     const thisCell = cellEl[i];
     console.log(thisCell);
     thisCell.addEventListener("click", function () {
       thisCell.classList.toggle("bg_blue");
       console.log("Changed the color" + thisCell.textContent);
-      //per generare i 16 numeri casuali utilizziamo Math.random()*16 e
-      // poi con la funzione Math.round arrotondiamo all’intero.*/
-      //generando cosí un numero casuale ad ogni click di una singola cella
-      num = Math.round(Math.random() * 16);
-      console.log("Numero casuale " + num);
+
+      if (bombs.includes(Number(thisCell.textContent))) {
+        thisCell.style.background = "black";
+        console.log("BOOM! Game over!");
+      }
     });
   }
 }
 const playButton = document.getElementById("play-button");
 
 playButton.addEventListener("click", startGame);
-
-// distribuiamo casualmente le bombe nelle celle ( possiamo posizionare max una bomba a cella )
-// con il numero casuale precedentemente creato,
-/*   --------- IN SOSTANZA DEVO ASSEGNARE UN COLORE AL NUMERO CASUALE CHE FUNGERA' DA BOMBA */
-/* -- per cui : 
-  - creo e seleziono l'elemento HTML che voglio modificare e assegno
-   un colore dall'array di colori utilizzando 
-   la proprietà style.background di CSS:
-
 
 /*Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: 
 le bombe.
@@ -84,16 +83,13 @@ le bombe.
 //si genererá un numero casuale con il colore preimpostato celeste
 
 /*----------STEP---2-------------------*/
-/*nella stessa cella può essere posizionata al massimo una bomba, 
-perciò nell’array delle bombe non potranno esserci due numeri uguali.*/
+/*verificare se il numero contentuto nella 
+cella corrisponde ad una delle 16 bombe generate. Se si, allora é una bomba altrimenti no.
 
-// distribuiamo casualmente le bombe nelle celle ( possiamo posizionare max una bomba a cella )
-// con il numero casuale precedentemente creato,
-// assegnadogli un una bomba ( cerchio nero ) che dovrá apparire sul browser una volta cliccato,
-// nello stesso tempo la casella si colorerá di rosso e dovremmo cancellare il colore celeste
-// ( prima assegnato)
+implementare il codice per generare le 16 bombe casuali comprese nel range di
+ celle generate.*/
 
-/* per cui assegnamo il colore rosso alla cella 'casuale' 
-  - useremo if else 
-  - allinterno andremo a posizionare una bomba 
-  - come far finire la partita una volta trovata la bomba?????? */
+/* Utilizziamo un array per tracciare le celle che contangono le bombe con un 
+    ciclo while  per generare numeri casuali finché non ne ha generati 16 diversi. 
+    Ad ogni iterazione, controllo se la cella corrispondente al numero casuale generato è già stata
+    selezionata come bomba e se non lo è, aggiungo quella cella all'array delle bombe.*/
