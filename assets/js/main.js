@@ -61,10 +61,9 @@ function startGame() {
         console.log("Game over!");
       } else {
         thisCell.classList.toggle("bg_blue");
-        score++;
       }
-      if (score === nMax - bombs.leght) {
-        console.log("hai vinto " + score);
+      if (score === nMax - bombs.lenght) {
+        console.log("HAI VINTO ! " + score);
       }
     });
   }
