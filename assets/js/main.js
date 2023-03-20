@@ -24,7 +24,7 @@ const cellEl = document.querySelectorAll(".cell");
 function startGame() {
   while (bombs <= 16) {
     let mrandom = Math.floor(Math.random() * nMax) + 1;
-    if (bombs.includes(mrandom)) {
+    if (!bombs.includes(mrandom)) {
       bombs.push(mrandom);
     }
   }
@@ -37,7 +37,7 @@ function startGame() {
       console.log("Changed the color" + thisCell.textContent);
 
       if (bombs.includes(Number(thisCell.textContent))) {
-        thisCell.style.background = "black";
+        thisCell.style.background = "red";
         console.log("BOOM! Game over!");
       }
     });
