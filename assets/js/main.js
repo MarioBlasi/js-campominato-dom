@@ -11,7 +11,7 @@
 const container = document.querySelector(".container-main");
 
 let nMax = 100;
-let bombs = [];
+
 /* Utilizziamo un array per tracciare le celle che contangono le bombe con un 
     ciclo while  per generare numeri casuali finché non ne ha generati 16 diversi. 
     Ad ogni iterazione, controllo se la cella corrispondente al numero casuale generato è già stata
@@ -24,23 +24,27 @@ for (let i = 1; i <= nMax; i++) {
 
 const cellEl = document.querySelectorAll(".cell");
 
-function bombe() {
-  bombs = [];
+function generazioneBombe() {
+  let bombs = []; // questo va messo all interno
   while (bombs.length < 16) {
     let mrandom = Math.floor(Math.random() * nMax) + 1;
+
     if (!bombs.includes(mrandom)) {
       bombs.push(mrandom);
+      // console.log();
     }
   }
+  return bombs;
 }
 
 function startGame() {
+  let bombs = generazioneBombe(); // questo va messo all interno
   for (let i = 0; i < cellEl.length; i++) {
     const thisCell = cellEl[i];
     console.log(thisCell);
     thisCell.addEventListener("click", function () {
       thisCell.classList.toggle("bg_blue");
-      console.log("Changed the color" + thisCell.textContent);
+      console.log("Cambio colore" + thisCell.textContent);
 
       if (bombs.includes(Number(thisCell.textContent))) {
         thisCell.style.background = "red";
