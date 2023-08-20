@@ -95,7 +95,7 @@ img {
 }
 /* -------BOMB------ */
 .bomb-cell {
-  background-image: url("/assets/img/2.webp");
+  background-image: url("../img/2.webp");
   background-repeat: no-repeat;
   background-size: cover;
 }
